@@ -37,8 +37,6 @@ app.get('/api/v1/tours/:id', (req, res) => {
     })
   }
 
-
-  
   res.status(200).json({
     status: 'success',
     results: tours.length, 
@@ -64,6 +62,24 @@ app.post('/api/v1/tours', (req, res) => {
 
 })
 
+app.patch('/api/v1/tours/:id', (req, res) => {
+  const tour = tours.find(tour => tour.id === req.params.id * 1)
+
+  if (!tour) {
+  return res.status(404).json({
+    satus: 'fail',
+    message: 'Invalid ID'
+  })
+}
+
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour: '<Updated tour here...>'
+    }
+  })
+})
 
 const port = 3000;
 
