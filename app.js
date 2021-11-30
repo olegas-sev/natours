@@ -1,22 +1,18 @@
 const fs = require('fs')
-
 const express = require('express');
+
+// Initialize express
 const app = express();
 
 // Middleware 
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-//   res.status(200).json({ name: 'Olegas', friend: 'Maram' });
-// });
-
-// app.post('/', (req, res) => {
-//   res.send('You can post to this url');
-// });
-
+// Read
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`))
 
-app.get('/api/v1/tours', (req, res) => {
+
+
+const getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
     results: tours.length, 
@@ -24,7 +20,10 @@ app.get('/api/v1/tours', (req, res) => {
       tours
     }
   })
-})
+}
+
+// Requests
+app.get('/api/v1/tours', getAllTours)
 
 app.get('/api/v1/tours/:id', (req, res) => {
   const id = req.params.id * 1
