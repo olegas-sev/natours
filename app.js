@@ -8,6 +8,10 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(morgan('dev'));
+
+// Static
+// app.use(express.static(`${__dirname}/public`));
+
 // Mounting routes
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
