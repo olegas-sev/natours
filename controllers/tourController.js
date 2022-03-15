@@ -13,6 +13,12 @@ exports.checkID = (req, res, next) => {
 }; 
 */
 
+const handleDuplicateFields = (err) => {
+  const value = Object.values(err.keyValue)[0];
+  const message = `Duplicate field value: ${value}. Use another value.`;
+  return new AppError(message, 400);
+};
+
 // Route handlers
 exports.getAllTours = (req, res) => {
   res.status(200).json({
@@ -37,11 +43,23 @@ exports.getTour = (req, res) => {
   // });
 };
 
-exports.createTour = (req, res) => {
-  res.status(201).json({
-    status: 'success',
-    // data: { tour: newTour },
-  });
+exports.createTour = async (req, res) => {
+  try {
+    // const newTour = new Tour({})
+    // newTours.save()
+
+    const newTour = await Tour.create(req.body);
+
+    res.status(201).json({
+      status: 'success',
+      data: { tour: newTour },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: 'Invalid data sent!',
+    });
+  }
 };
 
 exports.updateTour = (req, res) => {
