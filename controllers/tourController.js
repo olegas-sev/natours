@@ -16,7 +16,30 @@ exports.checkID = (req, res, next) => {
 // Route handlers
 exports.getAllTours = async (req, res) => {
   try {
-    const tours = await Tour.find();
+    console.log(req.query);
+    // BUILD QUERY
+    // 1A) Filtering
+    const queryObj = { ...req.query };
+    const excludedFiels = ['page', 'sort', 'limit', 'fields'];
+    excludedFiels.forEach((field) => delete queryObj[field]);
+    // 1B) Advanced filtering (operators)
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+
+    // QUERY/FILTER
+    let query = Tour.find(JSON.parse(queryStr));
+
+    // 2) Sorting
+    if (req.query.sort) {
+      const sortBy = req.quert.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+      query.sort('-createdAt');
+    }
+
+    // EXECUTE a query
+    const tours = await query;
+
     res.status(200).json({
       status: 'success',
       results: tours.length,
