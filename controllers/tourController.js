@@ -10,7 +10,7 @@ exports.aliasTopTours = (req, res, next) => {
 // Route handlers
 exports.getAllTours = async (req, res) => {
   try {
-    console.log(req.query);
+    // console.log(req.query);
     // BUILD QUERY
 
     // EXECUTE a query
@@ -20,7 +20,6 @@ exports.getAllTours = async (req, res) => {
       .limitFields()
       .paginate();
 
-    console.log(features);
     const tours = await features.query;
 
     res.status(200).json({
@@ -69,7 +68,7 @@ exports.createTour = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      message: 'Invalid data sent!',
+      message: err,
     });
   }
 };
