@@ -15,7 +15,6 @@ class APIFeatures {
 
     // QUERY/FILTER
     this.query = this.query.find(JSON.parse(queryStr));
-
     return this;
   }
   sort() {
