@@ -1,5 +1,5 @@
 const Tour = require('./../models/toursModel');
-const APIFeatures = require('./../utils/apiFeatures');
+const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 exports.aliasTopTours = (req, res, next) => {
