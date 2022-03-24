@@ -9,11 +9,17 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 // Middlewares
-app.use(express.json());
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
-// Static
-// app.use(express.static(`${__dirname}/public`));
+// Static, JSON
+app.use(express.static(`${__dirname}/public`));
+app.use(express.json());
+
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  console.log(req.headers);
+  next();
+});
 
 // Mounting routes
 app.use('/api/v1/tours', tourRouter);
