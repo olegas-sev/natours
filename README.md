@@ -14,6 +14,10 @@
   <a href="https://github.com/olegas-sev/natours/docs">
   Documentation
   </a>
+  <span> · </span>
+  <a href="https://www.udemy.com/course/nodejs-express-mongodb-bootcamp">
+  Built during course
+  </a>
 </h3>
 
 ---
@@ -28,5 +32,3 @@
 | [public](public)         | Static data               |
 | [routes](routes)         | API Routes                |
 | [utils](utils)           | Utilities                 |
-
-
