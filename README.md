@@ -2,7 +2,7 @@
 
 <a href="#">
   <p align="center">
-    <img height=100 src="./public/img/logo-green-round.png"/>
+    <img alt="natours logo" height=100 src="./public/img/logo-green-round.png"/>
   </p>
 </a>
 
@@ -11,7 +11,7 @@
 </p>
 
 <h3 align="center">
-  <a href="https://github.com/olegas-sev/natours/docs">
+  <a href="https://github.com/olegas-sev/natours/tree/main/docs">
   Documentation
   </a>
   <span> · </span>
@@ -24,11 +24,11 @@
 
 ## Structure
 
-| Codebase                 |      Description          |
-| :----------------------- | :-----------------------: |
-| [controller](controller) | Controller functions      |
-| [dev-data](dev-data)     | Development data          |
-| [models](models)         | Mongoose Schemas          |
-| [public](public)         | Static data               |
-| [routes](routes)         | API Routes                |
-| [utils](utils)           | Utilities                 |
+| Codebase                  |      Description          |
+|:--------------------------| :-----------------------: |
+| [controller](controllers) | Controller functions      |
+| [dev-data](dev-data)      | Development data          |
+| [models](models)          | Mongoose Schemas          |
+| [public](public)          | Static data               |
+| [routes](routes)          | API Routes                |
+| [utils](utils)            | Utilities                 |
