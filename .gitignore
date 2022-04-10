@@ -1,4 +1,14 @@
+# Dependenceis
 node_modules
-dist
-DS_Store
+
+# Configuration files
 config.env
+
+# Build file
+dist
+
+# MacOS
+DS_Store
+
+# WebStorm
+.idea
