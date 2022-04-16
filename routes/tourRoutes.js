@@ -21,6 +21,13 @@ router
     tourController.getMonthlyPlan
   )
 
+router
+  .route('/tours-within/:distance/center/:latlng/unit/:unit')
+  .get(tourController.getToursWithin)
+// /tour-within/200/center/-40,45/unit/km
+// better than query
+// /tour-within?distance=200&center=-40,45&unit=km
+
 // Routes
 router
   .route('/')
