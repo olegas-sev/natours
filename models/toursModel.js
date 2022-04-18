@@ -177,7 +177,14 @@ tourSchema.post(/^find/, function (docs, next) {
 
 // AGGREGATION MIDDLEWARE
 tourSchema.pre('aggregate', function (next) {
+  // If we use another aggregation pipeline
+  if (this.pipeline().length >= 1) {
+    console.log(this.pipeline().length >= 1)
+    return next()
+  }
+
   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } })
+
   console.log('THIS AGGREGATION', this.pipeline())
   next()
 })
