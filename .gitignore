@@ -1,11 +1,12 @@
-# Dependenceis
+# Dependencies
 node_modules
 
 # Configuration files
 config.env
 
-# Build file
+# Build file, cache
 dist
+.cache
 
 # MacOS
 DS_Store
